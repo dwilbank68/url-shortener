@@ -1,5 +1,6 @@
-require('dotenv').load();
-
+if (process.env.NODE_ENV == 'development') {
+    require('dotenv').load();
+}
 
 var port = process.env.PORT || 3000;
 
