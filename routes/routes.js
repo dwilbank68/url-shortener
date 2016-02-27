@@ -8,6 +8,10 @@ var URL = require('../models/url.js'),
 
 module.exports = function(app){
 
+    app.get('/', function(req,res){
+        res.render('index');
+    });
+
     app.get('/new/:str(*)', function(req, res){
 
         str = req.params.str;
