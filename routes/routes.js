@@ -1,7 +1,6 @@
 var URL = require('../models/url.js'),
     _ = require('lodash'),
     request = require('request'),
-    open = require("open"),
     str,
     short_url,
     env = process.env.NODE_ENV || 'development';
@@ -57,16 +56,7 @@ module.exports = function(app){
             .findOne({ short_url: req.params.short })
             .exec(function(err, entry){
                 if (entry){
-
-                    //res.render('view', {
-                    //    original_url: entry.original_url,
-                    //    short_url: entry.short_url
-                    //});
-
-                    open( entry.original_url, function (err) {
-                        if ( err ) throw err;
-                    });
-
+                    res.redirect(301, entry.original_url);
                 } else {
                     res.json({error: "No short url found for given input"});
                 }
