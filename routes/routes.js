@@ -4,7 +4,7 @@ var URL = require('../models/url.js'),
     open = require("open"),
     str,
     short_url,
-    site = 'localhost:3000';
+    site = process.env.HOSTNAME || 'localhost:3000';
 
 module.exports = function(app){
 

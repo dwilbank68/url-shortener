@@ -1,3 +1,6 @@
+require('dotenv').load();
+
+
 var port = process.env.PORT || 3000;
 
 var express = require('express');
@@ -5,7 +8,13 @@ var app = express();
 app.set('view engine', 'ejs');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://dwilbank:example@ds017248.mlab.com:17248/url-shortener');
+
+var mongoAddress = 'mongodb://'+
+    process.env.DB_USER+':'+
+    process.env.DB_PASS+'@'+
+    process.env.DB_HOST;
+
+mongoose.connect(mongoAddress);
 
 var routes = require('./routes/routes.js')(app);
 
