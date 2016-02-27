@@ -4,7 +4,9 @@ var URL = require('../models/url.js'),
     open = require("open"),
     str,
     short_url,
-    site = process.env.HOSTNAME || 'localhost:3000';
+    env = process.env.NODE_ENV || 'development';
+
+    var site = (env == 'production') ? 'wilbanks-url-shortener.herokuapp.com' : 'localhost:3000';
 
 module.exports = function(app){
 
